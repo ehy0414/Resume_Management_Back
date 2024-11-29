@@ -1,4 +1,4 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.resume_management.resume_management_back.user.dao.UserMapper">
@@ -8,7 +8,7 @@
         WHERE email = #{email}
     </select>
 
-    <insert id="join" parameterType="final_project_server.back.user.domain.JoinRequestDTO">
+    <insert id="join" parameterType="com.resume_management.resume_management_back.user.dto.JoinRequestDTO">
         INSERT INTO user_tbl (
             email, 
             password, 
@@ -20,4 +20,4 @@
         )
     </insert>
 
-</mapper> -->
+</mapper>

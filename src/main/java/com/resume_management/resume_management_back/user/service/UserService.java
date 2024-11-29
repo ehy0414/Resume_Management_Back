@@ -1,32 +1,35 @@
-// package com.resume_management.resume_management_back.user.service;
+package com.resume_management.resume_management_back.user.service;
 
-// import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-// import com.resume_management.resume_management_back.user.dao.UserMapper;
-// import com.resume_management.resume_management_back.user.dto.JoinRequestDTO;
-// import com.resume_management.resume_management_back.user.dto.JoinResponseDTO;
+import com.resume_management.resume_management_back.user.dao.UserMapper;
+import com.resume_management.resume_management_back.user.dto.JoinRequestDTO;
+import com.resume_management.resume_management_back.user.dto.JoinResponseDTO;
 
-// import lombok.RequiredArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-// @Service
-// @RequiredArgsConstructor
-// public class UserService {
-//     private final UserMapper userMapper;
+@Service
+@RequiredArgsConstructor
+public class UserService {
 
-//     public Boolean existsByEmail(String email) {
-//         return userMapper.existsByEmail(email);
-//     }
+    @Autowired
+    private final UserMapper userMapper;
 
-//     public JoinResponseDTO join(JoinRequestDTO joinDTO) {
-//         if (userMapper.existsByEmail(joinDTO.getEmail())) {
-//             return new JoinResponseDTO("동일한 이메일을 사용하는 계정이 이미 존재합니다.");
-//         }
+    public Boolean existsByEmail(String email) {
+        return userMapper.existsByEmail(email);
+    }
 
-//         joinDTO.setPassword(joinDTO.getPassword());
-//         // joinDTO.setRole("ROLE_BABONE");
+    public JoinResponseDTO join(JoinRequestDTO joinDTO) {
+        if (userMapper.existsByEmail(joinDTO.getEmail())) {
+            return new JoinResponseDTO("동일한 이메일을 사용하는 계정이 이미 존재합니다.");
+        }
 
-//         userMapper.join(joinDTO);
+        joinDTO.setPassword(joinDTO.getPassword());
+        // joinDTO.setRole("ROLE_BABONE");
 
-//         return new JoinResponseDTO("");
-//     }
-// }
+        userMapper.join(joinDTO);
+
+        return new JoinResponseDTO("");
+    }
+}
