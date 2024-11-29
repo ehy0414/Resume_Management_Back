@@ -22,7 +22,7 @@ public class UserService {
             return new JoinResponseDTO("동일한 이메일을 사용하는 계정이 이미 존재합니다.");
         }
 
-        joinDTO.setPassword(passwordEncoder.encode(joinDTO.getPassword()));
+        joinDTO.setPassword(joinDTO.getPassword());
         // joinDTO.setRole("ROLE_BABONE");
 
         userMapper.join(joinDTO);
