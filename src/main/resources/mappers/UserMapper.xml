@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.resume_management.resume_management_back.user.dao">
+<mapper namespace="com.resume_management.resume_management_back.user.dao.UserMapper">
     <select id="existsByEmail" resultType="boolean" parameterType="string">
         SELECT COUNT(1) <![CDATA[ > ]]> 0 
         FROM user_tbl

@@ -1,5 +1,6 @@
 package com.resume_management.resume_management_back.user.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.resume_management.resume_management_back.user.dao.UserMapper;
@@ -11,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
+    @Autowired
     private final UserMapper userMapper;
 
     public Boolean existsByEmail(String email) {
