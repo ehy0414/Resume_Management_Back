@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.resume_management.resume_management_back.user.dao.UserMapper;
 import com.resume_management.resume_management_back.user.dto.JoinRequestDTO;
 import com.resume_management.resume_management_back.user.dto.JoinResponseDTO;
+import com.resume_management.resume_management_back.user.dto.LoginRequestDTO;
+import com.resume_management.resume_management_back.user.dto.LoginResponseDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,5 +33,9 @@ public class UserService {
         userMapper.join(joinDTO);
 
         return new JoinResponseDTO("");
+    }
+
+    public LoginResponseDTO login(LoginRequestDTO params) {
+        return userMapper.loginRow(params);
     }
 }
