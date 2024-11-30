@@ -20,4 +20,14 @@
         )
     </insert>
 
+    <!-- loginRow --> 
+
+    <select id="loginRow"
+            parameterType="com.resume_management.resume_management_back.user.dto.LoginRequestDTO"
+            resultType="com.resume_management.resume_management_back.user.dto.LoginResponseDTO">
+        SELECT *
+        FROM user_tbl
+        WHERE email = #{email} and password = #{password}
+    </select>
+
 </mapper>
