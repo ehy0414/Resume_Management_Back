@@ -14,4 +14,7 @@ public interface UserMapper {
     public Boolean existsByEmail(String email);
 
     public LoginResponseDTO loginRow(LoginRequestDTO params); 
+
+    public LoginResponseDTO getAllInfo(Integer user_id); 
+    public void updateAllInfo(LoginRequestDTO params); 
 }

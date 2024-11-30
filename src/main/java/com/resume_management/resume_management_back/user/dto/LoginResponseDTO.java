@@ -5,8 +5,17 @@ import lombok.Data;
 @Data
 public class LoginResponseDTO {
     
-    private int user_id;
+    private int userId;
     private String name;
     private String email          ;
     private String password       ;
+    private String phone;
+    private String profileImage;
+    private String address;
+    private String github;
+    private String desiredJob;
+    private String skill;
+    private String title;
+    private String content;
+
 }
