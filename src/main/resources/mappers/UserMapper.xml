@@ -30,4 +30,32 @@
         WHERE email = #{email} and password = #{password}
     </select>
 
+    <!-- getAllInfo --> 
+
+    <select id="getAllInfo"
+            parameterType="Integer"
+            resultType="com.resume_management.resume_management_back.user.dto.LoginResponseDTO">
+        SELECT *
+        FROM user_tbl
+        WHERE user_id = #{user_id}
+    </select>
+
+    <!-- updateAllInfo --> 
+
+    <update id="updateAllInfo"
+            parameterType="com.resume_management.resume_management_back.user.dto.LoginRequestDTO">
+        UPDATE user_tbl
+        SET 
+            name = #{name},
+            phone = #{phone},
+            profile_image = #{profileImage},
+            address = #{address},
+            github = #{github},
+            desired_job = #{desiredJob},
+            skill = #{skill},
+            title = #{title},
+            content = #{content}
+        WHERE user_id = #{userId}
+    </update>
+    
 </mapper>
