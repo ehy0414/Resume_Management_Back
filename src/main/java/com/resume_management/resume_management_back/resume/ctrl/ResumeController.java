@@ -26,8 +26,8 @@ public class ResumeController {
     public ResponseEntity<Object> landing() {
         System.out.println("client endpoint /bbs/index"+resumeService);
 
+
         List<ResumeResponseDTO> list = resumeService.findAll();
-        System.out.println("result size = "+list.size());
 
         if( list.size() == 0) {
             Map<String, String> map = new HashMap<>();
