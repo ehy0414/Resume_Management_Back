@@ -8,6 +8,6 @@ import com.resume_management.resume_management_back.resume.domain.ResumeResponse
 
 @Mapper
 public interface ResumeMapper {
-    
+
     public List<ResumeResponseDTO> findAllRow();
 }

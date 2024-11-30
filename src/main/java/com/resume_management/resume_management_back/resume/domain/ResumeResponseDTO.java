@@ -4,7 +4,11 @@ import lombok.Data;
 
 @Data
 public class ResumeResponseDTO {
-    private Integer user_id;
+    private Integer userId;
     private String email;
     private String name;
+    private String skill;
+    private String profile_image;
+    private String content;
+
 }
