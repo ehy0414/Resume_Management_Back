@@ -1,11 +1,16 @@
 package com.resume_management.resume_management_back.user.ctrl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,13 +18,10 @@ import com.resume_management.resume_management_back.user.dto.JoinRequestDTO;
 import com.resume_management.resume_management_back.user.dto.JoinResponseDTO;
 import com.resume_management.resume_management_back.user.dto.LoginRequestDTO;
 import com.resume_management.resume_management_back.user.dto.LoginResponseDTO;
+import com.resume_management.resume_management_back.user.dto.career.CareerResponseDTO;
 import com.resume_management.resume_management_back.user.service.UserService;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -101,6 +103,18 @@ public class UserController {
         userService.updateAllInfo(params);
         
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    @GetMapping("/getCareer/{userId}")
+    public ResponseEntity<List<CareerResponseDTO>> getCareer(@PathVariable("userId") int userId) {
+        List<CareerResponseDTO> result = userService.getCareer(userId);
+        return new ResponseEntity<List<CareerResponseDTO>>(result,HttpStatus.OK);
+    }
+    
+    @PostMapping("/updateCareer")
+    public ResponseEntity<Void> updateCareer(@RequestBody List<CareerResponseDTO> list) {
+        userService.updateCareer(list);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
     
 }

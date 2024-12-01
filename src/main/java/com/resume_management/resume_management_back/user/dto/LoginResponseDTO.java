@@ -17,5 +17,7 @@ public class LoginResponseDTO {
     private String skill;
     private String title;
     private String content;
+   
+    
 
 }
