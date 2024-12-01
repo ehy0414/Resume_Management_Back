@@ -1,7 +1,10 @@
 package com.resume_management.resume_management_back.user.service;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,13 +16,9 @@ import com.resume_management.resume_management_back.user.dto.JoinRequestDTO;
 import com.resume_management.resume_management_back.user.dto.JoinResponseDTO;
 import com.resume_management.resume_management_back.user.dto.LoginRequestDTO;
 import com.resume_management.resume_management_back.user.dto.LoginResponseDTO;
+import com.resume_management.resume_management_back.user.dto.career.CareerResponseDTO;
 
 import lombok.RequiredArgsConstructor;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 
 @Service
@@ -84,4 +83,22 @@ public class UserService {
         }
     }
     
+    public List<CareerResponseDTO> getCareer(int userId){
+        return userMapper.getCareer(userId);
+    }
+
+    public void updateCareer(List<CareerResponseDTO> list) {
+        if (list == null || list.isEmpty()) {
+            return; // 리스트가 비어있으면 아무 작업도 하지 않음
+        }
+    
+        int userId = list.get(0).getUserId(); // 첫 번째 요소에서 userId 가져오기
+        
+        // 트랜잭션 시작 (예: @Transactional 어노테이션 사용)
+        userMapper.deleteCareer(userId); // 해당 사용자의 경력 삭제
+        System.out.println(list);
+        for (CareerResponseDTO career : list) {
+            userMapper.inputCareer(career); // 각 CareerResponseDTO를 삽입
+        }
+    }
 }
