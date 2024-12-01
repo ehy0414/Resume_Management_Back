@@ -4,7 +4,7 @@
 
     <select id="findAllRow"
             resultType="com.resume_management.resume_management_back.resume.domain.ResumeResponseDTO">
-        SELECT user_id, email, name, skill, profile_image
+        SELECT *
         FROM user_tbl;
     </select>
 
