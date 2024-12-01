@@ -101,4 +101,23 @@ public class UserService {
             userMapper.inputCareer(career); // 각 CareerResponseDTO를 삽입
         }
     }
+
+    public List<CareerResponseDTO> getEducation(int userId){
+        return userMapper.getEducation(userId);
+    }
+
+    public void updateEducation(List<CareerResponseDTO> list) {
+        if (list == null || list.isEmpty()) {
+            return; // 리스트가 비어있으면 아무 작업도 하지 않음
+        }
+    
+        int userId = list.get(0).getUserId(); // 첫 번째 요소에서 userId 가져오기
+        
+        // 트랜잭션 시작 (예: @Transactional 어노테이션 사용)
+        userMapper.deleteEducation(userId); // 해당 사용자의 경력 삭제
+        System.out.println(list);
+        for (CareerResponseDTO career : list) {
+            userMapper.inputEducation(career); // 각 CareerResponseDTO를 삽입
+        }
+    }
 }

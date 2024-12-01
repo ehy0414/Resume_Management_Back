@@ -76,6 +76,7 @@ public class UserController {
             @RequestParam("title") String title,
             @RequestParam("content") String content,
             @RequestParam("profileImage") String profileImage,
+            @RequestParam("age") int age,
             @RequestParam(value = "image", required = false) MultipartFile image) {
 
         // DTO 생성 및 서비스 호출을 위해 정보를 설정
@@ -89,6 +90,7 @@ public class UserController {
         params.setSkill(skill);
         params.setTitle(title);
         params.setContent(content);
+        params.setAge(age);
         
      
         // 이미지 파일 처리 (업로드 로직 추가)
@@ -114,6 +116,18 @@ public class UserController {
     @PostMapping("/updateCareer")
     public ResponseEntity<Void> updateCareer(@RequestBody List<CareerResponseDTO> list) {
         userService.updateCareer(list);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getEducation/{userId}")
+    public ResponseEntity<List<CareerResponseDTO>> getEducation(@PathVariable("userId") int userId) {
+        List<CareerResponseDTO> result = userService.getEducation(userId);
+        return new ResponseEntity<List<CareerResponseDTO>>(result,HttpStatus.OK);
+    }
+    
+    @PostMapping("/updateEducation")
+    public ResponseEntity<Void> updateEducation(@RequestBody List<CareerResponseDTO> list) {
+        userService.updateEducation(list);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
     
