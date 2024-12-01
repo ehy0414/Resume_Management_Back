@@ -10,5 +10,6 @@ public class ResumeResponseDTO {
     private String skill;
     private String profileImage;
     private String content;
+    private String age;
 
 }
