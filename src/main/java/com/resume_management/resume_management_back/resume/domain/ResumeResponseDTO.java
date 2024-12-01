@@ -8,7 +8,7 @@ public class ResumeResponseDTO {
     private String email;
     private String name;
     private String skill;
-    private String profile_image;
+    private String profileImage;
     private String content;
 
 }
