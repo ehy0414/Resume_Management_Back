@@ -54,7 +54,8 @@
             desired_job = #{desiredJob},
             skill = #{skill},
             title = #{title},
-            content = #{content}
+            content = #{content},
+            age = #{age}
         WHERE user_id = #{userId}
     </update>
 
@@ -84,4 +85,31 @@
         INSERT INTO career (user_id, occupation, company, period, details)
         VALUES (#{userId}, #{occupation}, #{company}, #{period}, #{details})
     </insert>    
+
+      <!-- getEducation --> 
+
+    <select id="getEducation"
+            parameterType="Integer"
+            resultType="com.resume_management.resume_management_back.user.dto.career.CareerResponseDTO">
+        SELECT *
+        FROM education
+        WHERE user_id = #{userId}
+
+    </select>    
+
+    <!-- deleteEducation --> 
+
+    <delete id="deleteEducation"
+            parameterType="Integer">
+        DELETE FROM education
+        WHERE user_id = #{userId}
+    </delete>
+
+    <!-- inputEducation --> 
+
+    <insert id="inputEducation"
+            parameterType="com.resume_management.resume_management_back.user.dto.career.CareerResponseDTO">
+        INSERT INTO education (user_id, company, period)
+        VALUES (#{userId}, #{company}, #{period})
+    </insert>   
     </mapper>

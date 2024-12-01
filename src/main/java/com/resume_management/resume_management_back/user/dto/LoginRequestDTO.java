@@ -16,5 +16,6 @@ public class LoginRequestDTO {
     private String skill;
     private String title;
     private String content;
+    private int age;
 
 }

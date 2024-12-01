@@ -26,4 +26,10 @@ public interface UserMapper {
     public void deleteCareer(int userId);
 
     public void inputCareer(CareerResponseDTO params); 
+
+    public List<CareerResponseDTO> getEducation(int userId); 
+
+    public void deleteEducation(int userId);
+
+    public void inputEducation(CareerResponseDTO params); 
 }
