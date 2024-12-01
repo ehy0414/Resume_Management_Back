@@ -57,5 +57,31 @@
             content = #{content}
         WHERE user_id = #{userId}
     </update>
-    
-</mapper>
+
+    <!-- getCareer --> 
+
+    <select id="getCareer"
+            parameterType="Integer"
+            resultType="com.resume_management.resume_management_back.user.dto.career.CareerResponseDTO">
+        SELECT *
+        FROM career
+        WHERE user_id = #{userId}
+
+    </select>    
+
+    <!-- deleteCareer --> 
+
+    <delete id="deleteCareer"
+            parameterType="Integer">
+        DELETE FROM career
+        WHERE user_id = #{userId}
+    </delete>
+
+    <!-- inputCareer --> 
+
+    <insert id="inputCareer"
+            parameterType="com.resume_management.resume_management_back.user.dto.career.CareerResponseDTO">
+        INSERT INTO career (user_id, occupation, company, period, details)
+        VALUES (#{userId}, #{occupation}, #{company}, #{period}, #{details})
+    </insert>    
+    </mapper>
